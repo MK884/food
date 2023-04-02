@@ -1,7 +1,7 @@
 import React from 'react'
 import  Button  from "@mui/material/Button";
 import { CustomButtonProps } from "interfaces/common";
-const CustomButton = ({ borderRadius, type, title, backgroundColor,color,fullWidth,icon,handleClick, disabled }: CustomButtonProps) => {
+const CustomButton = ({ type, title, backgroundColor,color,fullWidth,icon,handleClick, disabled }: CustomButtonProps) => {
   return (
     <Button
       disabled={disabled}
@@ -13,7 +13,6 @@ const CustomButton = ({ borderRadius, type, title, backgroundColor,color,fullWid
         minWidth: 130,
         backgroundColor,
         color,
-        borderRadius,
         fontSize: 16,
         fontWeight: 600,
         gap: '10px',

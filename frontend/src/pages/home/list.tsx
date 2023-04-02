@@ -3,7 +3,8 @@ import { Box, Typography, Stack } from "@mui/material";
 import Carousel from "components/common/carousel";
 import CustomCard from "components/common/CustomCard";
 import ButtonBases from "components/common/ButtonBases";
-import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
+import { useNavigate } from "react-router-dom";
 const HomeList = () => {
   const images = [
     {
@@ -114,6 +115,48 @@ const HomeList = () => {
       discount: "10% OFF",
     },
   ];
+  const image5 = [
+    {
+      id: 1,
+      title: "Noodles Yippee",
+      price: "100",
+      photo:
+        "https://www.jiomart.com/images/cms/aw_rbslider/slides/1677587636_3.jpg",
+      discount: "40% OFF",
+    },
+    {
+      id: 2,
+      title: "Snacks and Chips",
+      price: "150",
+      photo:
+        "https://www.jiomart.com/images/cms/aw_rbslider/slides/1677587610_2.jpg",
+      discount: "10% OFF",
+    },
+    {
+      id: 3,
+      title: "Chocolates",
+      price: "250",
+      photo:
+        "https://www.jiomart.com/images/cms/aw_rbslider/slides/1677587690_5.jpg",
+      discount: "50% OFF",
+    },
+    {
+      id: 4,
+      title: "Biscuits",
+      price: "300",
+      photo:
+        "https://www.jiomart.com/images/cms/aw_rbslider/slides/1677587565_1.jpg",
+      discount: "10% OFF",
+    },
+    {
+      id: 5,
+      title: "Colgate",
+      price: "100",
+      photo:
+        "https://www.jiomart.com/images/product/150x150/491252787/colgate-strong-teeth-dental-cream-toothpaste-200-g-pack-of-4-product-images-o491252787-p491252787-0-202206232110.jpg",
+      discount: "10% OFF",
+    },
+  ];
   return (
     <Box gap={4} display="flex" flexDirection="column">
       <Box
@@ -152,8 +195,9 @@ const HomeList = () => {
       </Box>
       <Box
         sx={{
-            backgroundColor:"#fcfcfc",
-            backgroundImage:"linear-gradient(161deg, #ffffff 0%, #f7f3f6 46%, #f5d7a1 100%)"
+          backgroundColor: "#fcfcfc",
+          backgroundImage:
+            "linear-gradient(161deg, #ffffff 0%, #f7f3f6 46%, #f5d7a1 100%)",
         }}
         flex={1}
         borderRadius="15px"
@@ -163,15 +207,71 @@ const HomeList = () => {
         minWidth="100%"
         mt="25px"
       >
-        <Typography fontSize="18px" fontWeight={600} color="#11142d" display="flex" alignItems="center" gap={1}>
-          Trendings<LocalFireDepartmentIcon sx={{
-            color:"#F5B83F"
-          }}/>
+        <Typography
+          fontSize="18px"
+          fontWeight={600}
+          color="#11142d"
+          display="flex"
+          alignItems="center"
+          gap={1}
+        >
+          Trendings
+          <LocalFireDepartmentIcon
+            sx={{
+              color: "#F5B83F",
+            }}
+          />
         </Typography>
         <Box mt={2.5} sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-            {image4.map((image) => (
-                <CustomCard id={image.id} photo={image.photo} title={image.title} price={image.price} discount={image.discount} />
-            ))}
+          {image4.map((image) => (
+            <CustomCard
+              id={image.id}
+              photo={image.photo}
+              title={image.title}
+              price={image.price}
+              discount={image.discount}
+            />
+          ))}
+        </Box>
+      </Box>
+      <Box
+       flex={1}
+       borderRadius="15px"
+       padding="20px"
+       bgcolor="#fcfcfc"
+       display="flex"
+       flexDirection="column"
+       minWidth="100%"
+       mt="25px"
+      >
+        <Typography fontSize="18px" fontWeight={600} color="#11142d">
+          Top Store
+        </Typography>
+
+      </Box>
+      <Box
+       flex={1}
+       borderRadius="15px"
+       padding="20px"
+       bgcolor="#fcfcfc"
+       display="flex"
+       flexDirection="column"
+       minWidth="100%"
+       mt="25px"
+      >
+        <Typography fontSize="18px" fontWeight={600} color="#11142d">
+          Products
+        </Typography>
+        <Box mt={2.5} sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+          {image5.map((image) => (
+            <CustomCard
+              id={image.id}
+              photo={image.photo}
+              title={image.title}
+              price={image.price}
+              discount={image.discount}
+            />
+          ))}
         </Box>
       </Box>
     </Box>

@@ -16,7 +16,7 @@ const CustomCard = ({id,  title,  price, photo, discount}: CustomCardProps) => {
   return (
     <Card
       component={Link}
-      to={`/Home/show/${id}`}
+      to={`/Products/show/${id}`}
       sx={{
           maxWidth: "230px",
           padding: "10px",

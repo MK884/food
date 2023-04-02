@@ -1,4 +1,5 @@
 export interface CustomButtonProps {
+    
     type?: string,
     title: string,
     backgroundColor: string,
@@ -26,3 +27,21 @@ export interface CustomCardProps {
     discount: string,
     photo: any,
   }
+
+export interface ICategory {
+    id: number;
+    title: string;
+    isActive: boolean;
+}
+
+export interface IProduct {
+    id: number;
+    name: string;
+    isActive: boolean;
+    description: string;
+    images: IFile[];
+    createdAt: string;
+    price: number;
+    category: ICategory;
+    stock: number;
+}

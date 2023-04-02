@@ -17,6 +17,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 
 import { AuthPage } from "@refinedev/core";
 import {
@@ -99,7 +100,12 @@ import {
   MyProfileShow,
 } from "pages/myprofiles";
 
+
+
+
+
 import authProvider from "./authProvider";
+import { EditProduct, ProductsList, ProductsShow } from "pages/products";
 // import { LoginPage } from "components/pages/auth/components";
 
 const axiosInstance = axios.create();
@@ -203,105 +209,113 @@ function App() {
               notificationProvider={notificationProvider}
               routerProvider={routerBindings}
               authProvider={authProvider}
-              resources={[
-                {
-                 
-                  name: "Dashboard",
+              resources={[{
+               
+                name: "Dashboard",
 
-                  list: "/Dashboard",
-                  create: "/Dashboard/create",
-                  edit: "/Dashboard/edit/:id",
-                  show: "/Dashboard/show/:id",
-                  meta: {
-                    icon: <WidgetsIcon />,
-                  },
+                list: "/Dashboard",
+                create: "/Dashboard/create",
+                edit: "/Dashboard/edit/:id",
+                show: "/Dashboard/show/:id",
+                meta: {
+                  icon: <WidgetsIcon />,
                 },
-                {
-                  
-                  name: "Home",
+              }, {
+                
+                name: "Home",
 
-                  list: "/Home",
-                  create: "/Home/create",
-                  edit: "/Home/edit/:id",
-                  show: "/Home/show/:id",
-                  meta: {
-                    canDelete: true,
-                    icon: <HomeIcon />,
-                  },
+                list: "/Home",
+                create: "/Home/create",
+                edit: "/Home/edit/:id",
+                show: "/Home/show/:id",
+                meta: {
+                  canDelete: true,
+                  icon: <HomeIcon />,
                 },
-                {
-                  
-                  name: "Shop_By_Category",
+              },{
+            
+                name: "Products",
 
-                  list: "/Shop_By_Category",
-                  create: "/Shop_By_Category/create",
-                  edit: "/Shop_By_Category/edit/:id",
-                  show: "/Shop_By_Category/show/:id",
-                  meta: {
-                    canDelete: true,
-                    icon: <CategoryIcon />,
-                  },
-                },
-                {
-                 
-                  name: "My_order",
+                list: "/Products",
+                // create: "/Products/create",
+                edit: "/Products/edit/:id",
+                show: "/Products/show/:id",
+                meta: {
+                  // canDelete: true,
+                  icon: <LocalMallIcon/>,
+                }
+              }, 
+              // {
+                
+              //   name: "Shop_By_Category",
 
-                  list: "/My_order",
-                  create: "/My_order/create",
-                  edit: "/My_order/edit/:id",
-                  show: "/My_order/show/:id",
-                  meta: {
-                    icon: <ShoppingCartIcon />,
-                  },
-                },
-                {
-                 
-                  name: "Wishlist",
+              //   list: "/Shop_By_Category",
+              //   create: "/Shop_By_Category/create",
+              //   edit: "/Shop_By_Category/edit/:id",
+              //   show: "/Shop_By_Category/show/:id",
+              //   meta: {
+              //     canDelete: true,
+              //     icon: <CategoryIcon />,
+              //   },
+              // }, 
+              {
+               
+                name: "My_order",
 
-                  list: "/Wishlist",
-                  create: "/Wishlist/create",
-                  edit: "/Wishlist/edit/:id",
-                  show: "/Wishlist/show/:id",
-                  meta: {
-                    icon: <FavoriteIcon />,
-                  },
+                list: "/My_order",
+                create: "/My_order/create",
+                edit: "/My_order/edit/:id",
+                show: "/My_order/show/:id",
+                meta: {
+                  icon: <ShoppingCartIcon />,
                 },
-                {
-                  
-                  name: "Wallet",
+              }, 
+              // {
+               
+              //   name: "Wishlist",
 
-                  list: "/Wallet",
-                  create: "/Wallet/create",
-                  edit: "/Wallet/edit/:id",
-                  show: "/Wallet/show/:id",
-                  meta: {
-                    icon: <AccountBalanceWalletIcon />,
-                  },
-                },
-                {
-                  
-                  name: "VendorsList",
+              //   list: "/Wishlist",
+              //   create: "/Wishlist/create",
+              //   edit: "/Wishlist/edit/:id",
+              //   show: "/Wishlist/show/:id",
+              //   meta: {
+              //     icon: <FavoriteIcon />,
+              //   },
+              // },
+              //  {
+                
+              //   name: "Wallet",
 
-                  list: "/VendorsList",
-                  create: "/VendorsList/create",
-                  edit: "/VendorsList/edit/:id",
-                  show: "/VendorsList/show/:id",
-                  meta: {
-                    icon: <StoreIcon />,
-                  },
-                },
-                {
-                  name: "MyProfile",
+              //   list: "/Wallet",
+              //   create: "/Wallet/create",
+              //   edit: "/Wallet/edit/:id",
+              //   show: "/Wallet/show/:id",
+              //   meta: {
+              //     icon: <AccountBalanceWalletIcon />,
+              //   },
+              // },
+               {
+                
+                name: "VendorsList",
 
-                  list: "/MyProfile",
-                  create: "/MyProfile/create",
-                  edit: "/MyProfile/edit/:id",
-                  show: "/MyProfile/show/:id",
-                  meta: {
-                    icon: <AccountCircleOutlinedIcon />,
-                  },
+                list: "/VendorsList",
+                create: "/VendorsList/create",
+                edit: "/VendorsList/edit/:id",
+                show: "/VendorsList/show/:id",
+                meta: {
+                  icon: <StoreIcon />,
                 },
-              ]}
+              }, {
+                name: "MyProfile",
+
+                list: "/MyProfile",
+                create: "/MyProfile/create",
+                edit: "/MyProfile/edit/:id",
+                show: "/MyProfile/show/:id",
+                meta: {
+                  icon: <AccountCircleOutlinedIcon />,
+                },
+              }, ]}
               options={{
                 syncWithLocation: true,
                 warnWhenUnsavedChanges: true,
@@ -459,6 +473,25 @@ function App() {
                     <Route
                       path="/MyProfile/show/:id"
                       element={<MyProfileShow />}
+                    />
+                  </Route>
+                  <Route
+                    index
+                    element={<NavigateToResource resource="Products" />}
+                  />
+                  <Route>
+                    <Route path="/Products" element={<ProductsList />} />
+                    {/* <Route
+                      path="/Products/create"
+                      element={<ProductsCreate />}
+                    /> */}
+                    <Route
+                      path="/Products/edit/:id"
+                      element={<EditProduct />}
+                    />
+                    <Route
+                      path="/Products/show/:id"
+                      element={<ProductsShow />}
                     />
                   </Route>
                 </Route>
