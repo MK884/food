@@ -17,7 +17,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
-import LocalMallIcon from '@mui/icons-material/LocalMall';
+import LocalMallIcon from "@mui/icons-material/LocalMall";
 
 import { AuthPage } from "@refinedev/core";
 import {
@@ -39,18 +39,7 @@ import routerBindings, {
 import dataProvider from "@refinedev/simple-rest";
 import axios, { AxiosRequestConfig } from "axios";
 import { CredentialResponse } from "interfaces/google";
-import {
-  BlogPostCreate,
-  BlogPostEdit,
-  BlogPostList,
-  BlogPostShow,
-} from "pages/blog-posts";
-import {
-  CategoryCreate,
-  CategoryEdit,
-  CategoryList,
-  CategoryShow,
-} from "pages/categories";
+
 import { Login } from "pages/login";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { parseJwt } from "utils/parse-jwt";
@@ -63,46 +52,20 @@ import {
   DashboardList,
   DashboardShow,
 } from "pages/dashboard";
-import {
-  Shop_By_CategoryCreate,
-  Shop_By_CategoryEdit,
-  Shop_By_CategoryList,
-  Shop_By_CategoryShow,
-} from "pages/shop_by_categories";
+
 import {
   My_orderCreate,
   My_orderEdit,
   My_orderList,
   My_orderShow,
 } from "pages/my_orders";
-import {
-  WishlistCreate,
-  WishlistEdit,
-  WishlistList,
-  WishlistShow,
-} from "pages/wishlists";
-import {
-  WalletCreate,
-  WalletEdit,
-  WalletList,
-  WalletShow,
-} from "pages/wallets";
-import {
-  StoresListCreate,
-  StoresListEdit,
-  StoresListList,
-  StoresListShow,
-} from "pages/storeslists";
+
 import {
   MyProfileCreate,
   MyProfileEdit,
   MyProfileList,
   MyProfileShow,
 } from "pages/myprofiles";
-
-
-
-
 
 import authProvider from "./authProvider";
 import { ProductsList, ProductsShow } from "pages/products";
@@ -209,75 +172,75 @@ function App() {
               notificationProvider={notificationProvider}
               routerProvider={routerBindings}
               authProvider={authProvider}
-              resources={[{
-               
-                name: "Dashboard",
+              resources={[
+                {
+                  name: "Dashboard",
 
-                list: "/Dashboard",
-                create: "/Dashboard/create",
-                edit: "/Dashboard/edit/:id",
-                show: "/Dashboard/show/:id",
-                meta: {
-                  icon: <WidgetsIcon />,
+                  list: "/Dashboard",
+                  create: "/Dashboard/create",
+                  edit: "/Dashboard/edit/:id",
+                  show: "/Dashboard/show/:id",
+                  meta: {
+                    icon: <WidgetsIcon />,
+                  },
                 },
-              }, {
-                
-                name: "Home",
+                {
+                  name: "Home",
 
-                list: "/Home",
-                create: "/Home/create",
-                edit: "/Home/edit/:id",
-                show: "/Home/show/:id",
-                meta: {
-                  canDelete: true,
-                  icon: <HomeIcon />,
+                  list: "/Home",
+                  create: "/Home/create",
+                  edit: "/Home/edit/:id",
+                  show: "/Home/show/:id",
+                  meta: {
+                    canDelete: true,
+                    icon: <HomeIcon />,
+                  },
                 },
-              },{
-            
-                name: "Products",
+                {
+                  name: "Products",
 
-                list: "/Products",
-                show: "/Products/show/:id",
-                meta: {
-                  icon: <LocalMallIcon/>,
-                }
-              }, 
-        
-              {
-               
-                name: "My_order",
-
-                list: "/My_order",
-                create: "/My_order/create",
-                edit: "/My_order/edit/:id",
-                show: "/My_order/show/:id",
-                meta: {
-                  icon: <ShoppingCartIcon />,
+                  list: "/Products",
+                  show: "/Products/show/:id",
+                  meta: {
+                    icon: <LocalMallIcon />,
+                  },
                 },
-              }, 
-             
-               {
-                
-                name: "Stores",
 
-                list: "/StoresList",
-                create: "/StoresList/create",
-                edit: "/StoresList/edit/:id",
-                show: "/StoresList/show/:id",
-                meta: {
-                  icon: <StoreIcon />,
-                },
-              }, {
-                name: "MyProfile",
+                {
+                  name: "My_order",
 
-                list: "/MyProfile",
-                create: "/MyProfile/create",
-                edit: "/MyProfile/edit/:id",
-                show: "/MyProfile/show/:id",
-                meta: {
-                  icon: <AccountCircleOutlinedIcon />,
+                  list: "/My_order",
+                  create: "/My_order/create",
+                  edit: "/My_order/edit/:id",
+                  show: "/My_order/show/:id",
+                  meta: {
+                    icon: <ShoppingCartIcon />,
+                  },
                 },
-              }, ]}
+
+                {
+                  name: "Stores",
+
+                  list: "/StoresList",
+                  create: "/StoresList/create",
+                  edit: "/StoresList/edit/:id",
+                  show: "/StoresList/show/:id",
+                  meta: {
+                    icon: <StoreIcon />,
+                  },
+                },
+                {
+                  name: "MyProfile",
+
+                  list: "/MyProfile",
+                  create: "/MyProfile/create",
+                  edit: "/MyProfile/edit/:id",
+                  show: "/MyProfile/show/:id",
+                  meta: {
+                    icon: <AccountCircleOutlinedIcon />,
+                  },
+                },
+              ]}
               options={{
                 syncWithLocation: true,
                 warnWhenUnsavedChanges: true,
@@ -324,7 +287,6 @@ function App() {
                     <Route path="/Home/show/:id" element={<HomeShow />} />
                   </Route>
 
-                 
                   <Route
                     index
                     element={<NavigateToResource resource="My_order" />}
@@ -342,30 +304,6 @@ function App() {
                     <Route
                       path="/My_order/show/:id"
                       element={<My_orderShow />}
-                    />
-                  </Route>
-
-                
-
-                 
-
-                  <Route
-                    index
-                    element={<NavigateToResource resource="StoresList" />}
-                  />
-                  <Route>
-                    <Route path="/StoresList" element={<StoresListList />} />
-                    <Route
-                      path="/StoresList/create"
-                      element={<StoresListCreate />}
-                    />
-                    <Route
-                      path="/StoresList/edit/:id"
-                      element={<StoresListEdit />}
-                    />
-                    <Route
-                      path="/StoresList/show/:id"
-                      element={<StoresListShow />}
                     />
                   </Route>
 
@@ -394,7 +332,7 @@ function App() {
                   />
                   <Route>
                     <Route path="/Products" element={<ProductsList />} />
-                  
+
                     <Route
                       path="/Products/show/:id"
                       element={<ProductsShow />}
@@ -468,7 +406,7 @@ function App() {
                       path="/update-password"
                       element={<AuthPage type="updatePassword" />}
                     /> */}
-                    <Route path="/login" element={<Login />}/>
+                    <Route path="/login" element={<Login />} />
                   </Route>{" "}
                 </Route>
                 <Route
