@@ -7,10 +7,10 @@
 
 import React from 'react'
 
-const VendorsListCreate = () => {
+const StoresListCreate = () => {
   return (
     <div>VendorsListCreate</div>
   )
 }
 
-export default VendorsListCreate
+export default StoresListCreate

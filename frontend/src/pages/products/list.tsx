@@ -22,7 +22,7 @@ import {
   useTranslate,
   IResourceComponentsProps,
 } from "@refinedev/core";
-import { CreateProduct, EditProduct } from "components/product";
+import { CreateProduct} from "components/product";
 
 import { useTable } from "@refinedev/core";
 import {
@@ -48,14 +48,7 @@ export const ProductsList: React.FC<IResourceComponentsProps> = () => {
     modal: { show: showCreateDrawer },
   } = createDrawerFormProps;
 
-  const editDrawerFormProps = useModalForm<IProduct, HttpError, IProduct>({
-    refineCoreProps: { action: "edit" },
-  });
-
-  const {
-    modal: { show: showEditDrawer },
-  } = editDrawerFormProps;
-
+ 
   const currentPrice = "asc";
 
   const {
@@ -274,7 +267,6 @@ export const ProductsList: React.FC<IResourceComponentsProps> = () => {
   return (
     <>
       <CreateProduct {...createDrawerFormProps} />
-      {/* <EditProduct {...editDrawerFormProps} /> */}
       <Box>
         <Stack
           display="flex"

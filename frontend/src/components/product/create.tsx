@@ -131,7 +131,7 @@ export const CreateProduct: React.FC<
                         <form onSubmit={handleSubmit(onFinish)}>
                             <FormControl sx={{ width: "100%" }}>
                                 <FormLabel required>
-                                    {t("products.fields.images.label")}
+                                    {t("product image")}
                                 </FormLabel>
                                 <Stack
                                     display="flex"
@@ -203,7 +203,7 @@ export const CreateProduct: React.FC<
                             <Stack gap="10px" marginTop="10px">
                                 <FormControl>
                                     <FormLabel required>
-                                        {t("products.fields.name")}
+                                        {t("name")}
                                     </FormLabel>
                                     <OutlinedInput
                                         id="name"
@@ -223,7 +223,7 @@ export const CreateProduct: React.FC<
                                 </FormControl>
                                 <FormControl>
                                     <FormLabel required>
-                                        {t("products.fields.description")}
+                                        {t("description")}
                                     </FormLabel>
                                     <OutlinedInput
                                         id="description"
@@ -243,9 +243,12 @@ export const CreateProduct: React.FC<
                                         </FormHelperText>
                                     )}
                                 </FormControl>
+                                <Stack display="flex" flexDirection="row" gap={4}>
+
+                              
                                 <FormControl>
                                     <FormLabel required>
-                                        {t("products.fields.price")}
+                                        {t("price")}
                                     </FormLabel>
                                     <OutlinedInput
                                         id="price"
@@ -272,6 +275,36 @@ export const CreateProduct: React.FC<
                                         </FormHelperText>
                                     )}
                                 </FormControl>
+                                <FormControl>
+                                    <FormLabel required>
+                                        {t("discount")}
+                                    </FormLabel>
+                                    <OutlinedInput
+                                        id="discount"
+                                        {...register("discount", {
+                                            required: t(
+                                                "errors.required.field",
+                                                { field: "Price" },
+                                            ),
+                                        })}
+                                        type="number"
+                                        style={{
+                                            width: "150px",
+                                            height: "40px",
+                                        }}
+                                        startAdornment={
+                                            <InputAdornment position="start">
+                                                %
+                                            </InputAdornment>
+                                        }
+                                    />
+                                    {errors.price && (
+                                        <FormHelperText error>
+                                            {errors.price.message}
+                                        </FormHelperText>
+                                    )}
+                                </FormControl>
+                                </Stack>
                                 <FormControl>
                                     <Controller
                                         control={control}
@@ -323,12 +356,13 @@ export const CreateProduct: React.FC<
                                         </FormHelperText>
                                     )}
                                 </FormControl>
+
                                 <FormControl>
                                     <FormLabel
                                         sx={{ marginTop: "10px" }}
                                         required
                                     >
-                                        {t("products.fields.isActive")}
+                                        {t("Status")}
                                     </FormLabel>
                                     <Controller
                                         control={control}
@@ -359,12 +393,12 @@ export const CreateProduct: React.FC<
                                                 <FormControlLabel
                                                     value={true}
                                                     control={<Radio />}
-                                                    label={t("status.enable")}
+                                                    label={t("enable")}
                                                 />
                                                 <FormControlLabel
                                                     value={false}
                                                     control={<Radio />}
-                                                    label={t("status.disable")}
+                                                    label={t("disable")}
                                                 />
                                             </RadioGroup>
                                         )}

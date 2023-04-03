@@ -44,4 +44,5 @@ export interface IProduct {
     price: number;
     category: ICategory;
     stock: number;
+    discount: number;
 }

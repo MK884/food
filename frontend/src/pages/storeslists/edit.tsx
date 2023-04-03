@@ -7,10 +7,10 @@
 
 import React from 'react'
 
-const VendorsListEdit = () => {
+const StoresListEdit = () => {
   return (
     <div>VendorsListEdit</div>
   )
 }
 
-export default VendorsListEdit
+export default StoresListEdit

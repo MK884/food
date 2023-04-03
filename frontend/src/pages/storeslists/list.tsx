@@ -6,10 +6,10 @@
 // };
 import React from 'react'
 
-const VendorsListList = () => {
+const StoresListList = () => {
   return (
     <div>VendorsListList</div>
   )
 }
 
-export default VendorsListList
+export default StoresListList

@@ -88,11 +88,11 @@ import {
   WalletShow,
 } from "pages/wallets";
 import {
-  VendorsListCreate,
-  VendorsListEdit,
-  VendorsListList,
-  VendorsListShow,
-} from "pages/vendorslists";
+  StoresListCreate,
+  StoresListEdit,
+  StoresListList,
+  StoresListShow,
+} from "pages/storeslists";
 import {
   MyProfileCreate,
   MyProfileEdit,
@@ -105,7 +105,7 @@ import {
 
 
 import authProvider from "./authProvider";
-import { EditProduct, ProductsList, ProductsShow } from "pages/products";
+import { ProductsList, ProductsShow } from "pages/products";
 // import { LoginPage } from "components/pages/auth/components";
 
 const axiosInstance = axios.create();
@@ -237,27 +237,12 @@ function App() {
                 name: "Products",
 
                 list: "/Products",
-                // create: "/Products/create",
-                edit: "/Products/edit/:id",
                 show: "/Products/show/:id",
                 meta: {
-                  // canDelete: true,
                   icon: <LocalMallIcon/>,
                 }
               }, 
-              // {
-                
-              //   name: "Shop_By_Category",
-
-              //   list: "/Shop_By_Category",
-              //   create: "/Shop_By_Category/create",
-              //   edit: "/Shop_By_Category/edit/:id",
-              //   show: "/Shop_By_Category/show/:id",
-              //   meta: {
-              //     canDelete: true,
-              //     icon: <CategoryIcon />,
-              //   },
-              // }, 
+        
               {
                
                 name: "My_order",
@@ -270,38 +255,15 @@ function App() {
                   icon: <ShoppingCartIcon />,
                 },
               }, 
-              // {
-               
-              //   name: "Wishlist",
-
-              //   list: "/Wishlist",
-              //   create: "/Wishlist/create",
-              //   edit: "/Wishlist/edit/:id",
-              //   show: "/Wishlist/show/:id",
-              //   meta: {
-              //     icon: <FavoriteIcon />,
-              //   },
-              // },
-              //  {
-                
-              //   name: "Wallet",
-
-              //   list: "/Wallet",
-              //   create: "/Wallet/create",
-              //   edit: "/Wallet/edit/:id",
-              //   show: "/Wallet/show/:id",
-              //   meta: {
-              //     icon: <AccountBalanceWalletIcon />,
-              //   },
-              // },
+             
                {
                 
-                name: "VendorsList",
+                name: "Stores",
 
-                list: "/VendorsList",
-                create: "/VendorsList/create",
-                edit: "/VendorsList/edit/:id",
-                show: "/VendorsList/show/:id",
+                list: "/StoresList",
+                create: "/StoresList/create",
+                edit: "/StoresList/edit/:id",
+                show: "/StoresList/show/:id",
                 meta: {
                   icon: <StoreIcon />,
                 },
@@ -362,29 +324,7 @@ function App() {
                     <Route path="/Home/show/:id" element={<HomeShow />} />
                   </Route>
 
-                  <Route
-                    index
-                    element={<NavigateToResource resource="Shop_By_Category" />}
-                  />
-                  <Route>
-                    <Route
-                      path="/Shop_By_Category"
-                      element={<Shop_By_CategoryList />}
-                    />
-                    <Route
-                      path="/Shop_By_Category/create"
-                      element={<Shop_By_CategoryCreate />}
-                    />
-                    <Route
-                      path="/Shop_By_Category/edit/:id"
-                      element={<Shop_By_CategoryEdit />}
-                    />
-                    <Route
-                      path="/Shop_By_Category/show/:id"
-                      element={<Shop_By_CategoryShow />}
-                    />
-                  </Route>
-
+                 
                   <Route
                     index
                     element={<NavigateToResource resource="My_order" />}
@@ -405,54 +345,27 @@ function App() {
                     />
                   </Route>
 
-                  <Route
-                    index
-                    element={<NavigateToResource resource="Wishlist" />}
-                  />
-                  <Route>
-                    <Route path="/Wishlist" element={<WishlistList />} />
-                    <Route
-                      path="/Wishlist/create"
-                      element={<WishlistCreate />}
-                    />
-                    <Route
-                      path="/Wishlist/edit/:id"
-                      element={<WishlistEdit />}
-                    />
-                    <Route
-                      path="/Wishlist/show/:id"
-                      element={<WishlistShow />}
-                    />
-                  </Route>
+                
+
+                 
 
                   <Route
                     index
-                    element={<NavigateToResource resource="Wallet" />}
+                    element={<NavigateToResource resource="StoresList" />}
                   />
                   <Route>
-                    <Route path="/Wallet" element={<WalletList />} />
-                    <Route path="/Wallet/create" element={<WalletCreate />} />
-                    <Route path="/Wallet/edit/:id" element={<WalletEdit />} />
-                    <Route path="/Wallet/show/:id" element={<WalletShow />} />
-                  </Route>
-
-                  <Route
-                    index
-                    element={<NavigateToResource resource="VendorsList" />}
-                  />
-                  <Route>
-                    <Route path="/VendorsList" element={<VendorsListList />} />
+                    <Route path="/StoresList" element={<StoresListList />} />
                     <Route
-                      path="/VendorsList/create"
-                      element={<VendorsListCreate />}
+                      path="/StoresList/create"
+                      element={<StoresListCreate />}
                     />
                     <Route
-                      path="/VendorsList/edit/:id"
-                      element={<VendorsListEdit />}
+                      path="/StoresList/edit/:id"
+                      element={<StoresListEdit />}
                     />
                     <Route
-                      path="/VendorsList/show/:id"
-                      element={<VendorsListShow />}
+                      path="/StoresList/show/:id"
+                      element={<StoresListShow />}
                     />
                   </Route>
 
@@ -481,14 +394,7 @@ function App() {
                   />
                   <Route>
                     <Route path="/Products" element={<ProductsList />} />
-                    {/* <Route
-                      path="/Products/create"
-                      element={<ProductsCreate />}
-                    /> */}
-                    <Route
-                      path="/Products/edit/:id"
-                      element={<EditProduct />}
-                    />
+                  
                     <Route
                       path="/Products/show/:id"
                       element={<ProductsShow />}
