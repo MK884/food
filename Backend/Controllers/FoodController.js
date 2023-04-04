@@ -53,7 +53,7 @@ const getFoodById = async(req,res) => {
 
 // Remove Food
 const removeFood = async(req,res) => {
-    const {id} = req.params``
+    const {id} = req.params
     let food;
     try {
         food = await Food.findByIdAndRemove(id)    
