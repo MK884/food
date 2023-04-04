@@ -62,6 +62,7 @@ export const ProductsList: React.FC<IResourceComponentsProps> = () => {
   const navigate = useNavigate();
 
 
+
   const image5 = [
     {
       id: 1,
@@ -316,16 +317,7 @@ export const ProductsList: React.FC<IResourceComponentsProps> = () => {
             required
             inputProps={{ "aria-label": "Without label" }}
             defaultValue=""
-            // value={currentFilterValues.propertyType}
-            // onChange={(e) => {
-            //   setFilters([
-            //     {
-            //       field: "propertyType",
-            //       operator: "eq",
-            //       value: e.target.value,
-            //     }
-            //   ],"replace");
-            // }}
+
           >
             <MenuItem value="">All</MenuItem>
             {["Burger", "Vegan", "Pizza", "BreakFast", "Cakes", "Barbeque"].map(

@@ -26,7 +26,7 @@ import { HttpError } from "@refinedev/core/dist/interfaces";
 import { useModalForm } from "@refinedev/react-hook-form";
 
 export const ProductsShow = () => {
-  const currentUser = true;
+  const currentUser = false;
   const { queryResult } = useShow();
   const { data, isLoading } = queryResult;
 

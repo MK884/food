@@ -21,7 +21,7 @@ res.send({foods})
 }
 
 
-// get all the users
+// get all the Foods
 const getAllFoods = async(req,res) => {
     let foods;
     try {
@@ -35,7 +35,7 @@ const getAllFoods = async(req,res) => {
     return res.send({message:"Unable to fetch foods details"})
 }
 
-// Getting Individual user
+// Getting Individual Food
 const getFoodById = async(req,res) => {
     const {id}= req.params
     let food;
@@ -50,7 +50,7 @@ const getFoodById = async(req,res) => {
     return res.send({message:"Unable to fetch individual food details"})
 }
 
-// Remove USer
+// Remove Food
 const removeFood = async(req,res) => {
     const {id} = req.params
     let food;
@@ -81,6 +81,7 @@ const UpdateFood = async(req,res) => {
     }
 }
 
+// Get Food by category
 const findFoodByCat = async(req,res) => {
     let food;
     try {
