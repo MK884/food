@@ -18,6 +18,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
+import Home from "./Admin Dashboard/pages/home/Home"
 
 import { AuthPage } from "@refinedev/core";
 import {
@@ -37,7 +38,7 @@ import routerBindings, {
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import dataProvider from "@refinedev/simple-rest";
-import axios, { AxiosRequestConfig } from "axios";
+// import axios, { AxiosRequestConfig } from "axios";
 import { CredentialResponse } from "interfaces/google";
 
 import { Login } from "pages/login";
@@ -71,19 +72,19 @@ import authProvider from "./authProvider";
 import { ProductsList, ProductsShow } from "pages/products";
 // import { LoginPage } from "components/pages/auth/components";
 
-const axiosInstance = axios.create();
-axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
-  const token = localStorage.getItem("token");
-  if (request.headers) {
-    request.headers["Authorization"] = `Bearer ${token}`;
-  } else {
-    request.headers = {
-      Authorization: `Bearer ${token}`,
-    };
-  }
+// const axiosInstance = axios.create();
+// axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
+//   const token = localStorage.getItem("token");
+//   if (request.headers) {
+//     request.headers["Authorization"] = `Bearer ${token}`;
+//   } else {
+//     request.headers = {
+//       Authorization: `Bearer ${token}`,
+//     };
+//   }
 
-  return request;
-});
+//   return request;
+// });
 
 function App() {
   const authProvider: AuthBindings = {
@@ -117,7 +118,7 @@ function App() {
       if (token && typeof window !== "undefined") {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
-        axios.defaults.headers.common = {};
+        // axios.defaults.headers.common = {};
         window.google?.accounts.id.revoke(token, () => {
           return {};
         });
@@ -406,9 +407,9 @@ function App() {
                       path="/update-password"
                       element={<AuthPage type="updatePassword" />}
                     /> */}
-                    <Route path="/login" element={<Login />} />
-                  </Route>{" "}
+                    <Route path="/login" element={<Login />} /> </Route>
                 </Route>
+                    {/* <Route path="/admin" element={<Home />} />  */}
                 <Route
                   element={
                     <Authenticated>
