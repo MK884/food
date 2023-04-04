@@ -1,13 +1,5 @@
-// import { IResourceComponentsProps } from "@refinedev/core";
-// import { MuiInferencer } from "@refinedev/inferencer/mui";
-
-// export const ProductsShow: React.FC<IResourceComponentsProps> = () => {
-//     return <MuiInferencer />;
-// };
-
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
-import { Add } from "@mui/icons-material";
 import { useShow, useOne } from "@refinedev/core";
 import { useNavigate } from "react-router-dom";
 import { EditProduct } from "components/product";
@@ -94,11 +86,16 @@ export const ProductsShow = () => {
                 flexDirection="row"
                 gap={4}
               >
-                <EditButton onClick={() => showEditDrawer()} resource="Products" variant="contained" fullWidth />
+                <EditButton onClick={() => showEditDrawer()} resource="Products" variant="contained" size='large' sx={{
+                  width: { lg: '15rem', xs: '7rem' },
+                }} />
                 <DeleteButton
                   fullWidth
                   variant="contained"
                   resource="Products"
+                  size='large' sx={{
+                    width: { lg: '15rem', xs: '7rem' },
+                  }}
                 />
               </Stack>
             ) : (

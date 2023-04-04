@@ -1,5 +1,5 @@
 export interface CustomButtonProps {
-    
+    variant?: string,
     type?: string,
     title: string,
     backgroundColor: string,
@@ -45,4 +45,13 @@ export interface IProduct {
     category: ICategory;
     stock: number;
     discount: number;
+}
+
+export interface IProfile {
+    id: number;
+    name: string;
+    address: string;
+    mail: string;
+    phone: number;
+    image: IFile[];
 }

@@ -33,13 +33,13 @@ export const Header: React.FC = () => {
           justifyContent="flex-end"
           alignItems="center"
         >
-          <IconButton
+          {/* <IconButton
             onClick={() => {
               setMode();
             }}
           >
             {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
-          </IconButton>
+          </IconButton> */}
           {showUserInfo && (
             <Stack direction="row" gap="16px" alignItems="center">
               {user.avatar && <Avatar src={user?.avatar} alt={user?.name} />}

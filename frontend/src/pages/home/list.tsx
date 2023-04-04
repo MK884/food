@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Typography, Stack } from "@mui/material";
 import Carousel from "components/common/carousel";
 import CustomCard from "components/common/CustomCard";

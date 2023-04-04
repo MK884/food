@@ -1,9 +1,4 @@
-import {
-  AuthBindings,
-  Authenticated,
-  GitHubBanner,
-  Refine,
-} from "@refinedev/core";
+import { AuthBindings, Authenticated, Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 // icons
@@ -45,7 +40,7 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { parseJwt } from "utils/parse-jwt";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
-import { HomeCreate, HomeEdit, HomeList, HomeShow } from "pages/home";
+import { HomeList } from "pages/home";
 import {
   DashboardCreate,
   DashboardEdit,
@@ -60,12 +55,7 @@ import {
   My_orderShow,
 } from "pages/my_orders";
 
-import {
-  MyProfileCreate,
-  MyProfileEdit,
-  MyProfileList,
-  MyProfileShow,
-} from "pages/myprofiles";
+import { MyProfileList } from "pages/myprofiles";
 
 import authProvider from "./authProvider";
 import { ProductsList, ProductsShow } from "pages/products";
@@ -161,7 +151,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <GitHubBanner /> */}
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <CssBaseline />
@@ -188,11 +177,8 @@ function App() {
                   name: "Home",
 
                   list: "/Home",
-                  create: "/Home/create",
-                  edit: "/Home/edit/:id",
-                  show: "/Home/show/:id",
+
                   meta: {
-                    canDelete: true,
                     icon: <HomeIcon />,
                   },
                 },
@@ -219,23 +205,10 @@ function App() {
                 },
 
                 {
-                  name: "Stores",
-
-                  list: "/StoresList",
-                  create: "/StoresList/create",
-                  edit: "/StoresList/edit/:id",
-                  show: "/StoresList/show/:id",
-                  meta: {
-                    icon: <StoreIcon />,
-                  },
-                },
-                {
                   name: "MyProfile",
 
                   list: "/MyProfile",
-                  create: "/MyProfile/create",
-                  edit: "/MyProfile/edit/:id",
-                  show: "/MyProfile/show/:id",
+
                   meta: {
                     icon: <AccountCircleOutlinedIcon />,
                   },
@@ -282,9 +255,6 @@ function App() {
                   />
                   <Route>
                     <Route path="/Home" element={<HomeList />} />
-                    <Route path="/Home/create" element={<HomeCreate />} />
-                    <Route path="/Home/edit/:id" element={<HomeEdit />} />
-                    <Route path="/Home/show/:id" element={<HomeShow />} />
                   </Route>
 
                   <Route
@@ -313,18 +283,6 @@ function App() {
                   />
                   <Route>
                     <Route path="/MyProfile" element={<MyProfileList />} />
-                    <Route
-                      path="/MyProfile/create"
-                      element={<MyProfileCreate />}
-                    />
-                    <Route
-                      path="/MyProfile/edit/:id"
-                      element={<MyProfileEdit />}
-                    />
-                    <Route
-                      path="/MyProfile/show/:id"
-                      element={<MyProfileShow />}
-                    />
                   </Route>
                   <Route
                     index

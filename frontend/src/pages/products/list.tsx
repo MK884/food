@@ -1,9 +1,3 @@
-// import { IResourceComponentsProps, GetListResponse } from "@refinedev/core";
-// import { MuiInferencer } from "@refinedev/inferencer/mui";
-
-// export const ProductsList: React.FC<IResourceComponentsProps<GetListResponse<{}>>> = () => {
-//     return <MuiInferencer />;
-// };
 import React from "react";
 import {
   Add,
@@ -301,7 +295,6 @@ export const ProductsList: React.FC<IResourceComponentsProps> = () => {
                 {...params}
                 label="Search Products"
                 onChange={() => {}}
-                // value={currentFilterValues.title}
                 InputProps={{
                   ...params.InputProps,
                   type: "search",
@@ -316,16 +309,7 @@ export const ProductsList: React.FC<IResourceComponentsProps> = () => {
             required
             inputProps={{ "aria-label": "Without label" }}
             defaultValue=""
-            // value={currentFilterValues.propertyType}
-            // onChange={(e) => {
-            //   setFilters([
-            //     {
-            //       field: "propertyType",
-            //       operator: "eq",
-            //       value: e.target.value,
-            //     }
-            //   ],"replace");
-            // }}
+       
           >
             <MenuItem value="">All</MenuItem>
             {["Burger", "Vegan", "Pizza", "BreakFast", "Cakes", "Barbeque"].map(
@@ -337,17 +321,22 @@ export const ProductsList: React.FC<IResourceComponentsProps> = () => {
             )}
           </Select>
           <Stack direction="row" alignItems="center">
-            {/* <CustomButton
-            title="Add"
-            handleClick={() => navigate("/Products/create")}
-            backgroundColor="#A555EC"
-            color="#fcfcfc"
-            icon={<Add />}
-          /> */}
+           
             <CreateButton
               onClick={() => showCreateDrawer()}
-              variant="outlined"
-              sx={{ marginBottom: "5px" }}
+              variant='contained'
+            
+              size="large"
+              sx={{
+                bgcolor: '#a555ec',
+                height: "3rem",
+                color: "#fcfcfc",
+                borderColor: "#a555ec",
+                "&:hover": {
+                  borderColor: "#a555ec",
+                  bgcolor: '#a555ec',
+                },
+              }}
             >
               {t("addProduct")}
             </CreateButton>
