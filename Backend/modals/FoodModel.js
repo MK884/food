@@ -13,9 +13,9 @@ const foodSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
-    rating:{
+    discount:{
         type:Number,
-        // required:true
+        required:true
     },
     photos:{
         type:[String],
@@ -25,12 +25,13 @@ const foodSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    varieties:{
-        type:[String]
-    },
     stock:{
         type:Number,
         required:true
+    },
+    isFeatured:{
+        type:Boolean,
+        default:false
     }
 },
 {

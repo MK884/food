@@ -1,14 +1,15 @@
 const Food = require("../modals/FoodModel")
 
 const addFoods = async(req,res) => {
-    const {name,desc,price,photos,varieties,category} = req.body;
+    const {name,desc,price,photos,stock,category,discount} = req.body;
 let foods; 
 foods = new Food({
     name,
     desc,
     price,
+    discount,
     photos,
-    varieties,
+    stock,
     category
 });
 
@@ -52,7 +53,7 @@ const getFoodById = async(req,res) => {
 
 // Remove Food
 const removeFood = async(req,res) => {
-    const {id} = req.params
+    const {id} = req.params``
     let food;
     try {
         food = await Food.findByIdAndRemove(id)    
