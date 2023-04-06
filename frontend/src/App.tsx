@@ -3,18 +3,13 @@ import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 // icons
 import HomeIcon from "@mui/icons-material/Home";
-import CategoryIcon from "@mui/icons-material/Category";
-import WidgetsIcon from "@mui/icons-material/Widgets";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import StoreIcon from "@mui/icons-material/Store";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 
-import { AuthPage } from "@refinedev/core";
+import { AuthPage } from "@refinedev/mui";
 import {
   ErrorComponent,
   // Layout,
@@ -41,12 +36,6 @@ import { parseJwt } from "utils/parse-jwt";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { HomeList } from "pages/home";
-import {
-  DashboardCreate,
-  DashboardEdit,
-  DashboardList,
-  DashboardShow,
-} from "pages/dashboard";
 
 import {
   My_orderCreate,
@@ -56,10 +45,11 @@ import {
 } from "pages/my_orders";
 
 import { MyProfileList } from "pages/myprofiles";
-
+import { useFormContext } from "react-hook-form";
+import FormControlLabel from "@mui/material";
+import Checkbox from "@mui/material";
 import authProvider from "./authProvider";
 import { ProductsList, ProductsShow } from "pages/products";
-// import { LoginPage } from "components/pages/auth/components";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -149,6 +139,161 @@ function App() {
     },
   };
 
+  // const authProvider: AuthBindings = {
+  //   login: async ({ credential , providerName, email }:CredentialResponse) => {
+  //     if (providerName === "google") {
+  //       const profileObj = credential ? parseJwt(credential) : null;
+
+  //       if (profileObj) {
+  //         localStorage.setItem(
+  //           "user",
+  //           JSON.stringify({
+  //             ...profileObj,
+  //             avatar: profileObj.picture,
+  //           })
+  //         );
+
+  //         localStorage.setItem("token", `${credential}`);
+
+  //         return {
+  //           success: true,
+  //           redirectTo: "/",
+  //         };
+  //       }
+  //       window.location.href = `https://oauth2.googleapis.com/${}`;
+  //       // window.location.href = "https://accounts.google.com/o/oauth2/v2/auth";
+  //       return {
+  //         success: true,
+  //       };
+  //     }
+
+  //     if (providerName === "github") {
+  //       window.location.href = "https://github.com/login/oauth/authorize";
+  //       return {
+  //         success: true,
+  //       };
+  //     }
+
+  //     if (email) {
+  //       localStorage.setItem("email", email);
+  //       return {
+  //         success: true,
+  //         redirectTo: "/",
+  //       };
+  //     }
+
+  //     return {
+  //       success: false,
+  //       error: {
+  //         message: "Login failed",
+  //         name: "Invalid email or password",
+  //       },
+  //     };
+  //   },
+  //   register: async (params) => {
+  //     if (params.email && params.password) {
+  //       localStorage.setItem("email", params.email);
+  //       return {
+  //         success: true,
+  //         redirectTo: "/",
+  //       };
+  //     }
+  //     return {
+  //       success: false,
+  //       error: {
+  //         message: "Register failed",
+  //         name: "Invalid email or password",
+  //       },
+  //     };
+  //   },
+  //   updatePassword: async (params) => {
+  //     if (params.newPassword) {
+  //       //we can update password here
+  //       return {
+  //         success: true,
+  //       };
+  //     }
+  //     return {
+  //       success: false,
+  //       error: {
+  //         message: "Update password failed",
+  //         name: "Invalid password",
+  //       },
+  //     };
+  //   },
+  //   forgotPassword: async (params) => {
+  //     if (params.email) {
+  //       //we can send email with reset password link here
+  //       return {
+  //         success: true,
+  //       };
+  //     }
+  //     return {
+  //       success: false,
+  //       error: {
+  //         message: "Forgot password failed",
+  //         name: "Invalid email",
+  //       },
+  //     };
+  //   },
+  //   logout: async () => {
+  //     localStorage.removeItem("email");
+  //     return {
+  //       success: true,
+  //       redirectTo: "/login",
+  //     };
+  //   },
+  //   onError: async (error) => {
+  //     console.error(error);
+  //     return { error };
+  //   },
+  //   check: async () =>
+  //     localStorage.getItem("email")
+  //       ? {
+  //           authenticated: true,
+  //         }
+  //       : {
+  //           authenticated: false,
+  //           error: {
+  //             message: "Check failed",
+  //             name: "Not authenticated",
+  //           },
+  //           logout: true,
+  //           redirectTo: "/login",
+  //         },
+  //   getPermissions: async () => ["admin"],
+  //   getIdentity: async () => ({
+  //     id: 1,
+  //     name: "Jane Doe",
+  //     avatar:
+  //       "https://unsplash.com/photos/IWLOvomUmWU/download?force=true&w=640",
+  //   }),
+  // };
+
+  // const RememeberMe = () => {
+  //     const { register } = useFormContext();
+
+  //     return (
+  //         <FormControlLabel
+  //             sx={{
+  //                 span: {
+  //                     fontSize: "12px",
+  //                     color: "text.secondary",
+  //                 },
+  //             }}
+  //             color="secondary"
+  //             control={
+  //                 <Checkbox
+  //                     size="small"
+  //                     id="rememberMe"
+  //                     {...register("rememberMe")}
+  //                 />
+  //             }
+  //             label="Remember me"
+  //         />
+  //     );
+  // };
+
   return (
     <BrowserRouter>
       <RefineKbarProvider>
@@ -162,17 +307,6 @@ function App() {
               routerProvider={routerBindings}
               authProvider={authProvider}
               resources={[
-                {
-                  name: "Dashboard",
-
-                  list: "/Dashboard",
-                  create: "/Dashboard/create",
-                  edit: "/Dashboard/edit/:id",
-                  show: "/Dashboard/show/:id",
-                  meta: {
-                    icon: <WidgetsIcon />,
-                  },
-                },
                 {
                   name: "Home",
 
@@ -229,26 +363,6 @@ function App() {
                     </Authenticated>
                   }
                 >
-                  <Route
-                    index
-                    element={<NavigateToResource resource="Dashboard" />}
-                  />
-                  <Route>
-                    <Route path="/Dashboard" element={<DashboardList />} />
-                    <Route
-                      path="/Dashboard/create"
-                      element={<DashboardCreate />}
-                    />
-                    <Route
-                      path="/Dashboard/edit/:id"
-                      element={<DashboardEdit />}
-                    />
-                    <Route
-                      path="/Dashboard/show/:id"
-                      element={<DashboardShow />}
-                    />
-                  </Route>
-
                   <Route
                     index
                     element={<NavigateToResource resource="Home" />}

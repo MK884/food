@@ -53,5 +53,6 @@ export interface IProfile {
     address: string;
     mail: string;
     phone: number;
+    gender: string;
     image: IFile[];
 }

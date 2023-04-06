@@ -43,33 +43,33 @@ const HomeList = () => {
   ];
   const images3 = [
     {
-      imgPath: "https://images5.alphacoders.com/415/415257.jpg",
-      title: "Burger",
+      imgPath: "https://www.biscuitpeople.com/media/cache/platform_full/1620019677_ededb6352a8135e773d7d437896c200f.jpg",
+      title: "Bicuits and Cookies",
     },
     {
       imgPath:
-        "https://previews.123rf.com/images/deemwave/deemwave1611/deemwave161100066/65545518-fresh-vegetables-vegan-background-asian-style.jpg",
-      title: "Vegan",
+        "https://osiamart.com/image/cache/catalog/cold-drinks/Banner/DairyBakery-600x315.jpg",
+      title: "Dairy and Bakery",
     },
     {
       imgPath:
-        "https://media.istockphoto.com/id/1303021179/photo/different-tipes-of-pizza.jpg?b=1&s=170667a&w=0&k=20&c=LkDbMg4uxhFmvsFomSxh1xHMSqwgOYRN5hMZixe9smM=",
-      title: "Pizza",
+        "https://mydukaan.s3.amazonaws.com/4281273/55e33af8-6cb3-4372-93bd-e4d880e66470/image-6d87d48e-6f8f-4a4a-8494-da98f1c42346-50889089-bc25-44cc-b565-ff5a9795c749.jpg",
+      title: "Tea and Coffee",
     },
     {
       imgPath:
-        "https://thumbs.dreamstime.com/b/healthy-breakfast-background-muesli-fruits-berries-nuts-coffee-eggs-honey-oat-grains-other-white-flat-lay-top-view-216462498.jpg",
-      title: "BreakFast",
+        "https://funmoodnamkeen.com/wp-content/uploads/2022/05/WIDE-RANGE-OF-SNACKS-NAMKEEN-2.png",
+      title: "Snacks and Namkeen ",
     },
     {
       imgPath:
-        "https://w0.peakpx.com/wallpaper/201/721/HD-wallpaper-chocolate-cake-blur-sweets-cake-with-cherry-dessert.jpg",
-      title: "Cakes",
+        "https://osiamart.com/image/cache/catalog/cold-drinks/Banner/Beverages-600x315.jpg",
+      title: "Cold Drink and Juices",
     },
     {
       imgPath:
-        "https://img.freepik.com/free-vector/vector-illustration-culinary-banner-barbecue-background-with-grilled-meat-sausages-vegetables-sauces_1441-463.jpg",
-      title: "Barbeque",
+        "https://www.carnationbreakfastessentials.com/sites/g/files/lpfasj756/themes/site/cbe_new/assets/img_cbe/grab-go.png",
+      title: "Breakfast Essentials",
     },
   ];
   const image4 = [
@@ -184,7 +184,7 @@ const HomeList = () => {
         mt="25px"
       >
         <Typography fontSize="18px" fontWeight={600} color="#11142d">
-          Food Category
+          Shop From Top Category
         </Typography>
         <Box mt={2.5} sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
           {images3.map((image) => (
@@ -244,7 +244,7 @@ const HomeList = () => {
        mt="25px"
       >
         <Typography fontSize="18px" fontWeight={600} color="#11142d">
-          Top Store
+          About Store
         </Typography>
 
       </Box>

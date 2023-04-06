@@ -26,6 +26,8 @@ export interface CredentialResponse {
     | "brn_add_session"
     | "btn_confirm_add_session";
   clientId?: string;
+  providerName?: string;
+  email?: string;
 }
 
 export interface GsiButtonConfiguration {

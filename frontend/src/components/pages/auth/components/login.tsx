@@ -9,6 +9,7 @@ import {
   useTranslate,
   useActiveAuthProvider,
 } from "@refinedev/core";
+import { colors } from "@mui/material";
 
 type DivPropsType = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,

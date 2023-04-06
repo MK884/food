@@ -276,6 +276,65 @@ export const EditProfile: React.FC<
                                     />
                                 </FormControl>
                                </Stack>
+                               <FormControl>
+                                    <FormLabel required>
+                                        {t("Gender")}
+                                    </FormLabel>
+                                    <Controller
+                                        control={control}
+                                        {...register("gender")}
+                                        // defaultValue={false}
+                                        render={({ field }) => {
+                                            return (
+                                                <RadioGroup
+                                                    id="gender"
+                                                    defaultValue={getValues(
+                                                        "gender",
+                                                    )}
+                                                    {...field}
+                                                    // onChange={(event) => {
+                                                    //     const value =
+                                                    //         event.target
+                                                    //             .value ===
+                                                    //         "true";
+
+                                                    //     setValue(
+                                                    //         "gender",
+                                                    //         value,
+                                                    //         {
+                                                    //             shouldValidate:
+                                                    //                 true,
+                                                    //         },
+                                                    //     );
+
+                                                    //     return value;
+                                                    // }}
+                                                    row
+                                                >
+                                                    <FormControlLabel
+                                                        value={true}
+                                                        control={<Radio />}
+                                                        label={t(
+                                                            "Male",
+                                                        )}
+                                                    />
+                                                    <FormControlLabel
+                                                        value={false}
+                                                        control={<Radio />}
+                                                        label={t(
+                                                            "Female",
+                                                        )}
+                                                    />
+                                                </RadioGroup>
+                                            );
+                                        }}
+                                    />
+                                    {errors.gender && (
+                                        <FormHelperText error>
+                                            {errors.gender.message}
+                                        </FormHelperText>
+                                    )}
+                                </FormControl>
                             </Stack>
                         </form>
                     </Box>

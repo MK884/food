@@ -8,4 +8,5 @@ import BBQ from './images/BBQ.svg';
 import Burger from "./images/Burger.svg";
 import Pizza from "./images/Pizza.svg";
 import Vegan from "./images/Vegan.svg";
-export { cupCake, Macaroon, Logo, FoodDelivery, Logo2, FoodBlack, BBQ, Pizza, Burger, Vegan } 
+import login_backgroud from "./images/login-background.png";
+export { login_backgroud, cupCake, Macaroon, Logo, FoodDelivery, Logo2, FoodBlack, BBQ, Pizza, Burger, Vegan } 

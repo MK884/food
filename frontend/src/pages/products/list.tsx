@@ -33,14 +33,14 @@ import CustomButton from "components/CustomButton";
 import CustomCard from "components/common/CustomCard";
 import Autocomplete from "@mui/material/Autocomplete";
 export const ProductsList: React.FC<IResourceComponentsProps> = () => {
-  const t = useTranslate();
-  const createDrawerFormProps = useModalForm<IProduct, HttpError, IProduct>({
-    refineCoreProps: { action: "create" },
-  });
+  // const t = useTranslate();
+  // const createDrawerFormProps = useModalForm<IProduct, HttpError, IProduct>({
+  //   refineCoreProps: { action: "create" },
+  // });
 
-  const {
-    modal: { show: showCreateDrawer },
-  } = createDrawerFormProps;
+  // const {
+  //   modal: { show: showCreateDrawer },
+  // } = createDrawerFormProps;
 
  
   const currentPrice = "asc";
@@ -260,7 +260,7 @@ export const ProductsList: React.FC<IResourceComponentsProps> = () => {
 
   return (
     <>
-      <CreateProduct {...createDrawerFormProps} />
+      {/* <CreateProduct {...createDrawerFormProps} /> */}
       <Box>
         <Stack
           display="flex"
@@ -320,7 +320,7 @@ export const ProductsList: React.FC<IResourceComponentsProps> = () => {
               )
             )}
           </Select>
-          <Stack direction="row" alignItems="center">
+          {/* <Stack direction="row" alignItems="center">
            
             <CreateButton
               onClick={() => showCreateDrawer()}
@@ -340,7 +340,7 @@ export const ProductsList: React.FC<IResourceComponentsProps> = () => {
             >
               {t("addProduct")}
             </CreateButton>
-          </Stack>
+          </Stack> */}
         </Stack>
         <Box
           flex={1}

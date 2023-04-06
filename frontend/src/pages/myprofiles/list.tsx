@@ -7,7 +7,23 @@ import MailIcon from "@mui/icons-material/Mail";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { EditProfile } from "components/MyProfile";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { useGetIdentity } from "@refinedev/core";
+
+type IUser = {
+  id: number;
+  name: string;
+  avatar: string;
+  email: string;
+  gender: string;
+  address: string;
+  number : number;
+};
+
+
 const MyProfileList = () => {
+
+  const { data: user } = useGetIdentity<IUser>();
+
   const editDrawerFormProps = useModalForm<IProfile, HttpError, IProfile>({
     refineCoreProps: { action: "edit" },
   });
@@ -56,7 +72,10 @@ const MyProfileList = () => {
             }}
             gap={8}
           >
+            {
+              user?.avatar && 
             <Avatar
+              src={user?.avatar}
               sx={{
                 cursor: "pointer",
                 width: {
@@ -68,9 +87,9 @@ const MyProfileList = () => {
                   md: 280,
                 },
               }}
-              src=""
-              alt="Profile Photo"
+              alt={user?.name}
             />
+            }
             <EditButton
               variant="outlined"
               size="large"
@@ -111,9 +130,19 @@ const MyProfileList = () => {
               flexDirection="row"
               height="fit-content"
             >
+              {
+                user?.name && (
               <Typography fontSize="22px" fontWeight={600} color="#11142d">
-                Username
+                {user.name}
+              </Typography>)
+
+              }
+              {/* { user?.gender && 
+
+              <Typography variant="caption" color="rgb(128, 129, 145)">
+                ( {user.gender} )
               </Typography>
+              } */}
               <Typography variant="caption" color="rgb(128, 129, 145)">
                 ( Male / Female )
               </Typography>
@@ -139,6 +168,7 @@ const MyProfileList = () => {
                 </Typography>
               </Box>
               <Box mt={2}>
+                
                 <Typography>
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                   Mollitia obcaecati voluptatem pariatur porro rerum. Eligendi
@@ -176,7 +206,10 @@ const MyProfileList = () => {
                 </Typography>
                 <Box mt={2} display="flex" flexDirection="row" gap={2}>
                   <MailIcon />
-                  <Typography>user@gmail.com</Typography>
+                  { user?.email && 
+
+                  <Typography>{user.email}</Typography>
+                  }
                 </Box>
               </Box>
             </Box>

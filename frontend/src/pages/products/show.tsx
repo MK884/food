@@ -2,7 +2,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useShow, useOne } from "@refinedev/core";
 import { useNavigate } from "react-router-dom";
-import { EditProduct } from "components/product";
 import {
   Show,
   NumberField,
@@ -12,10 +11,6 @@ import {
 import { Box, Select, MenuItem, Table, Alert } from "@mui/material";
 import { Typography, Stack } from "@mui/material";
 import CustomButton from "components/CustomButton";
-import { EditButton } from "@refinedev/mui";
-import { IProduct } from "interfaces/common";
-import { HttpError } from "@refinedev/core/dist/interfaces";
-import { useModalForm } from "@refinedev/react-hook-form";
 
 export const ProductsShow = () => {
   const currentUser = true;
@@ -32,13 +27,7 @@ export const ProductsShow = () => {
     },
   });
 
-  const editDrawerFormProps = useModalForm<IProduct, HttpError, IProduct>({
-    refineCoreProps: { action: "edit" },
-  });
 
-  const {
-    modal: { show: showEditDrawer },
-  } = editDrawerFormProps;
 
   const navigate = useNavigate();
 
@@ -46,11 +35,9 @@ export const ProductsShow = () => {
     <Alert variant="filled" severity="success">
       Successfully Add to cart — check it out!
     </Alert>;
-    // navigate("/My_order");
   };
   return (
     <>
-      <EditProduct {...editDrawerFormProps} />
       <Show isLoading={isLoading}>
         <Box
           display="flex"
@@ -79,26 +66,7 @@ export const ProductsShow = () => {
                 alt="product"
               />
             </Box>
-            {currentUser ? (
-              <Stack
-                display="flex"
-                justifyContent="center"
-                flexDirection="row"
-                gap={4}
-              >
-                <EditButton onClick={() => showEditDrawer()} resource="Products" variant="contained" size='large' sx={{
-                  width: { lg: '15rem', xs: '7rem' },
-                }} />
-                <DeleteButton
-                  fullWidth
-                  variant="contained"
-                  resource="Products"
-                  size='large' sx={{
-                    width: { lg: '15rem', xs: '7rem' },
-                  }}
-                />
-              </Stack>
-            ) : (
+          
               <CustomButton
                 title="Add to Cart"
                 backgroundColor="#A555EC"
@@ -107,7 +75,6 @@ export const ProductsShow = () => {
                 fullWidth
                 handleClick={cartHanlde}
               />
-            )}
           </Box>
           <Box
             flex={1}
