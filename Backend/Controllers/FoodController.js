@@ -1,14 +1,17 @@
-const Food = require("../modals/FoodModel")
+// const Food = require("../modals/FoodModel")
+import Food from '../modals/FoodModel.js';
+import mongoose from 'mongoose';
 
 const addFoods = async(req,res) => {
-    const {name,desc,price,photos,varieties,category} = req.body;
+    const {name,desc,price,photos,stock,category,discount} = req.body;
 let foods; 
 foods = new Food({
     name,
     desc,
     price,
+    discount,
     photos,
-    varieties,
+    stock,
     category
 });
 
@@ -21,36 +24,40 @@ res.send({foods})
 }
 
 
-// get all the users
+// get all the Foods
 const getAllFoods = async(req,res) => {
     let foods;
     try {
-         foods = await Food.find({})
+        foods = await Food.find({})
+        res.header('Access-Control-Expose-Headers', 'x-total-count');
+        res.status(200).json(foods);
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: error.message });
     }
-    if(foods){
-        return res.send({foods})
-    }
-    return res.send({message:"Unable to fetch foods details"})
+    // if(foods){
+    //     return res.send({foods})
+    // }
+    // return res.send({message:"Unable to fetch foods details"})
 }
 
-// Getting Individual user
+// Getting Individual Food
 const getFoodById = async(req,res) => {
     const {id}= req.params
     let food;
     try {
-         food = await Food.findById(id)
+        food = await Food.findById(id)
+        res.header('Access-Control-Expose-Headers', 'x-total-count');
+        res.status(200).json(food);
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: error.message });
     }
-    if(food){
-        return res.send({food})
-    }
-    return res.send({message:"Unable to fetch individual food details"})
+    // if(food){
+    //     return res.send({food})
+    // }
+    // return res.send({message:"Unable to fetch individual food details"})
 }
 
-// Remove USer
+// Remove Food
 const removeFood = async(req,res) => {
     const {id} = req.params
     let food;
@@ -81,6 +88,7 @@ const UpdateFood = async(req,res) => {
     }
 }
 
+// Get Food by category
 const findFoodByCat = async(req,res) => {
     let food;
     try {
@@ -94,11 +102,5 @@ const findFoodByCat = async(req,res) => {
     return res.send({msg:"Unable to fetch the food"})
 }
 
+export { addFoods, getAllFoods, UpdateFood, removeFood, findFoodByCat, getFoodById};
 
-
-exports.addFoods = addFoods;
-exports.getAllFoods = getAllFoods;
-exports.getFoodById = getFoodById;
-exports.removeFood = removeFood;
-exports.UpdateFood = UpdateFood;
-exports.findFoodByCat = findFoodByCat;

@@ -2,6 +2,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useShow, useOne } from "@refinedev/core";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   Show,
   NumberField,
@@ -13,23 +14,28 @@ import { Typography, Stack } from "@mui/material";
 import CustomButton from "components/CustomButton";
 
 export const ProductsShow = () => {
-  const currentUser = true;
+  const currentUser = false;
   const { queryResult } = useShow();
-  const { data, isLoading } = queryResult;
+  const { id } = useParams();
+  const { data, isLoading, isError } = queryResult;
 
-  const record = data?.data;
+if (isError) {
+    return <div>Something went wrong!</div>;
+}
 
-  const { data: categoryData, isLoading: categoryIsLoading } = useOne({
-    resource: "categories",
-    id: record?.category?.id || "",
-    queryOptions: {
-      enabled: !!record,
-    },
-  });
+  const singleProduct = data?.data ?? {};
+
+  // const { data: categoryData, isLoading: categoryIsLoading } = useOne({
+  //   resource: "categories",
+  //   id: record?.category?.id || "",
+  //   queryOptions: {
+  //     enabled: !!record,
+  //   },
+  // });
 
 
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const cartHanlde = () => {
     <Alert variant="filled" severity="success">
@@ -62,7 +68,7 @@ export const ProductsShow = () => {
             <Box boxShadow="0px 4px 16px rgba(0,0,0,.08)">
               <img
                 width="100%"
-                src="https://www.jiomart.com/images/product/600x600/491582579/amul-kool-rose-flavoured-milk-180-ml-bottle-product-images-o491582579-p491582579-0-202203170907.jpg"
+                src={singleProduct.photos}
                 alt="product"
               />
             </Box>
@@ -90,10 +96,10 @@ export const ProductsShow = () => {
           >
             <Stack gap={2} borderBottom="1px solid #e0e0e0" paddingBottom={4}>
               <Typography variant="subtitle1" fontWeight={600}>
-                Amul Kool Rose Flavoured Milk 180 ml (Bottle)
+                {singleProduct.name}
               </Typography>
               <Typography>
-                M.R.P:<strong> ₹25.00</strong> (Incl. of all taxes)
+                M.R.P:<strong> ₹ {singleProduct.price}</strong> (Incl. of all taxes)
               </Typography>
               <Stack flexDirection="row" gap={1}>
                 <Typography

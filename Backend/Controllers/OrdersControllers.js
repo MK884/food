@@ -1,4 +1,5 @@
-const Orders = require("../modals/OrdersModel");
+// const Orders = require("../modals/OrdersModel");
+import Orders from '../modals/OrdersModel.js';
 
 // Getting All the orders
 const getOrders = async(req,res) => {
@@ -36,9 +37,9 @@ const getUserOrder = async(req,res) => {
     return res.send({msg:"Not orders yet!!"})
 }
 
+export { orderItems, getUserOrder, getOrders }
 
 
-
-exports.orderItems = orderItems;
-exports.getOrders = getOrders;
-exports.getUserOrder = getUserOrder;
+// exports.orderItems = orderItems;
+// exports.getOrders = getOrders;
+// exports.getUserOrder = getUserOrder;

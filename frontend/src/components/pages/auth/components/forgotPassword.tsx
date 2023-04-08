@@ -9,6 +9,28 @@ import {
   ForgotPasswordPageProps,
 } from "@refinedev/core";
 
+import { Button, colors } from "@mui/material";
+import { FoodBlack } from "assets";
+import {
+  Drawer,
+  FormControlLabel,
+  Input,
+  Radio,
+  RadioGroup,
+  TextField,
+  Avatar,
+  Typography,
+  FormLabel,
+  Stack,
+  Box,
+  IconButton,
+  FormControl,
+  OutlinedInput,
+  InputAdornment,
+  FormHelperText,
+  Autocomplete,
+} from "@mui/material";
+
 type DivPropsType = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
@@ -55,8 +77,24 @@ export const ForgotPasswordPage: React.FC<ForgotPasswordProps> = ({
   };
 
   const content = (
+    <Box display="grid" justifyContent="center" margin="10rem 0">
+      <Link to="/">
+        <img
+          src={FoodBlack}
+          alt="Food-delivery Logo"
+          style={{ width: "100%", marginBottom: 26 }}
+        />
+      </Link>
+
+      <Box
+        padding="10px"
+        borderRadius="15px"
+        bgcolor="#fcfcfc"
+        height="fit-content"
+        width="32rem"
+      >
     <div {...contentProps}>
-      <h1 style={{ textAlign: "center" }}>
+      <h1 style={{ textAlign: "center", color: '#a555ec' }}>
         {translate("pages.forgotPassword.title", "Forgot your password?")}
       </h1>
       <hr />
@@ -67,34 +105,48 @@ export const ForgotPasswordPage: React.FC<ForgotPasswordProps> = ({
         }}
         {...formProps}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            padding: 25,
-          }}
-        >
-          <label>
-            {translate("pages.forgotPassword.fields.email", "Email")}
-          </label>
-          <input
-            name="email"
-            type="mail"
-            autoCorrect="off"
-            spellCheck={false}
-            autoCapitalize="off"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
+          <Box
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                padding: 25,
+              }}
+              gap={2}
+            >
+          <FormControl>
+                <TextField
+                  fullWidth
+                  label="Email"
+                  autoCorrect="off"
+                  spellCheck={false}
+                  autoCapitalize="off"
+                  required
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </FormControl>
+              <Button
+                sx={{
+                  bgcolor: "#a555ec",
+                  "&:hover":{
+                    bgcolor: "#a555ec",
+
+                  }
+                }}
+                variant="contained"
+                type="submit"
+                value={translate("pages.login.submit", "Send reset instructions")}
+              >Submit</Button>
+          {/* <input
             type="submit"
             disabled={isLoading}
             value={translate(
               "pages.forgotPassword.buttons.submit",
               "Send reset instructions"
             )}
-          />
+          /> */}
           <br />
           {loginLink ?? (
             <span>
@@ -105,9 +157,11 @@ export const ForgotPasswordPage: React.FC<ForgotPasswordProps> = ({
               {renderLink("/login", translate("pages.login.signin", "Sign in"))}
             </span>
           )}
-        </div>
+      </Box>
       </form>
     </div>
+    </Box>
+  </Box>
   );
 
   return (

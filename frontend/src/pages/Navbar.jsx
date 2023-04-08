@@ -70,7 +70,7 @@ export default function FullWidthTabs(...other) {
         <Stack>
           <img src={Logo} alt="logo" />
         </Stack>
-        <Typography variant='h4' fontSize={30} fontWeight={700}>Food Delivery</Typography>
+        <Typography variant='h4' fontSize={30} fontWeight={700}>Faayda Bazaar</Typography>
       </Stack>
         <Box>
           <Tabs

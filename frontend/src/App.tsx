@@ -8,8 +8,9 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
+// import Home from "./Admin Dashboard/pages/home/Home"
 
-import { AuthPage } from "@refinedev/mui";
+import { AuthPage } from "./components/pages/auth";
 import {
   ErrorComponent,
   // Layout,
@@ -27,7 +28,7 @@ import routerBindings, {
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import dataProvider from "@refinedev/simple-rest";
-import axios, { AxiosRequestConfig } from "axios";
+// import axios, { AxiosRequestConfig } from "axios";
 import { CredentialResponse } from "interfaces/google";
 
 import { Login } from "pages/login";
@@ -50,6 +51,7 @@ import FormControlLabel from "@mui/material";
 import Checkbox from "@mui/material";
 import authProvider from "./authProvider";
 import { ProductsList, ProductsShow } from "pages/products";
+import axios, { AxiosRequestConfig } from "axios";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -302,7 +304,7 @@ function App() {
           <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
           <RefineSnackbarProvider>
             <Refine
-              dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+              dataProvider={dataProvider("http://localhost:4000/api")}
               notificationProvider={notificationProvider}
               routerProvider={routerBindings}
               authProvider={authProvider}
@@ -417,7 +419,7 @@ function App() {
                       <NavigateToResource />
                     </Authenticated>
                   }
-                >
+                />
                   <Route element={<Authenticated fallback={<Outlet />} />}>
                     {/* <Route
                       path="/login"
@@ -478,9 +480,9 @@ function App() {
                       path="/update-password"
                       element={<AuthPage type="updatePassword" />}
                     /> */}
-                    <Route path="/login" element={<Login />} />
-                  </Route>{" "}
-                </Route>
+                    <Route path="/login" element={<Login />} /> </Route>
+                {/* </Route> */}
+                    {/* <Route path="/admin" element={<Home />} />  */}
                 <Route
                   element={
                     <Authenticated>

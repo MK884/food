@@ -55,6 +55,7 @@ export const ProductsList: React.FC<IResourceComponentsProps> = () => {
   };
   const navigate = useNavigate();
 
+  const products = data?.data ?? [];
 
   const image5 = [
     {
@@ -309,7 +310,16 @@ export const ProductsList: React.FC<IResourceComponentsProps> = () => {
             required
             inputProps={{ "aria-label": "Without label" }}
             defaultValue=""
-       
+            // value={currentFilterValues.propertyType}
+            // onChange={(e) => {
+            //   setFilters([
+            //     {
+            //       field: "propertyType",
+            //       operator: "eq",
+            //       value: e.target.value,
+            //     }
+            //   ],"replace");
+            // }}
           >
             <MenuItem value="">All</MenuItem>
             {["Burger", "Vegan", "Pizza", "BreakFast", "Cakes", "Barbeque"].map(
@@ -356,13 +366,15 @@ export const ProductsList: React.FC<IResourceComponentsProps> = () => {
             Products
           </Typography>
           <Box mt={2.5} sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-            {image5.map((image) => (
+            {products.map((product) => (
               <CustomCard
-                id={image.id}
-                photo={image.photo}
-                title={image.title}
-                price={image.price}
-                discount={image.discount}
+
+                key={product._id}
+                id={product._id}
+                photo={product.photos[0]}
+                title={product.name}
+                price={product.price}
+                discount={product.discount}
               />
             ))}
           </Box>

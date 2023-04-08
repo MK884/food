@@ -4,7 +4,26 @@ import CustomCard from "components/common/CustomCard";
 import ButtonBases from "components/common/ButtonBases";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import { useNavigate } from "react-router-dom";
+import { useList } from "@refinedev/core";
+import { useTable } from "@refinedev/core";
 const HomeList = () => {
+
+  // const { tableQueryResult: { data, isError, isLoading } } = useTable();
+  // const products = data?.data ?? [];
+
+  const { data, isLoading, isError} = useList({
+    resource: "products",
+    config: {
+      pagination: {
+        pageSize: 4
+      }
+    }
+  })
+
+  const product = data?.data ?? [];
+
+
+
   const images = [
     {
       imgPath:
@@ -262,13 +281,14 @@ const HomeList = () => {
           Products
         </Typography>
         <Box mt={2.5} sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-          {image5.map((image) => (
+          {product.map((product) => (
             <CustomCard
-              id={image.id}
-              photo={image.photo}
-              title={image.title}
-              price={image.price}
-              discount={image.discount}
+              key={product._id}
+              id={product._id}
+              photo={product.photos}
+              title={product.name}
+              price={product.price}
+              discount={product.discount}
             />
           ))}
         </Box>

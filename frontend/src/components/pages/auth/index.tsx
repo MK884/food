@@ -10,7 +10,7 @@ import {
   ForgotPasswordPage,
   UpdatePasswordPage,
 } from "./components";
-
+import { login_backgroud } from "assets";
 export type DivPropsType = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
@@ -25,7 +25,13 @@ export type AuthProps = AuthPageProps<
   DivPropsType,
   FormPropsType
 >;
-
+const authWrapperProps = {
+  style: {
+      background:
+          `radial-gradient(50% 50% at 50% 50%,rgba(255, 255, 255, 0) 0%,rgba(0, 0, 0, 0.5) 100%),url("${login_backgroud}")`,
+      backgroundSize: "cover",
+  },
+};
 /**
  * **refine** has a default auth page form which is served on `/login` route when the `authProvider` configuration is provided.
  * @param title is not implemented yet.

@@ -1,9 +1,11 @@
-const User = require("../modals/UserModal");
-const bcrypt = require("bcrypt");
+// const User = require("../modals/UserModal");
+import User from '../modals/UserModal.js';
+// const bcrypt = require("bcrypt");
+import bcrypt from 'bcrypt';
 
 // User Signup
 const userRegistration = async (req, res) => {
-  const { name, password, cPassword, email } = req.body;
+  const { name, password, email } = req.body;
   let existingUser;
   let hashPassword = bcrypt.hashSync(password, 10);
   const newUser = new User({
@@ -139,11 +141,13 @@ const getAllCartItems = async(req,res) => {
     res.send({cart})
 }
 
-exports.userRegistration = userRegistration;
-exports.userLogin = userLogin;
-exports.getAllUsers = getAllUsers;
-exports.getUserById = getUserById;
-exports.removeUser = removeUser;
-exports.updateUser = updateUser;
-exports.addToCart = addToCart;
-exports.getAllCartItems = getAllCartItems;
+// exports.userRegistration = userRegistration;
+// exports.userLogin = userLogin;
+// exports.getAllUsers = getAllUsers;
+// exports.getUserById = getUserById;
+// exports.removeUser = removeUser;
+// exports.updateUser = updateUser;
+// exports.addToCart = addToCart;
+// exports.getAllCartItems = getAllCartItems;
+
+export { userRegistration, userLogin, getAllUsers, getUserById, removeUser, updateUser, addToCart, getAllCartItems };

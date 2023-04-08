@@ -1,11 +1,14 @@
-const express = require("express")
+// const express = require("express")
+import express from "express";
 const router = express.Router()
-const {addFoods,getAllFoods,getFoodById,removeFood,UpdateFood,findFoodByCat} = require("../Controllers/FoodController")
+import { addFoods, getAllFoods, getFoodById, removeFood, UpdateFood, findFoodByCat } from '../Controllers/FoodController.js'
+// import { addFoods, getAllFoods, getFoodById, removeFood, UpdateFood, findFoodByCat} from "../Controllers/FoodController";
 
-router.post("/addfoods", addFoods)
-router.get("/getallfoods", getAllFoods)
-router.get("/getfood/:id", getFoodById)
-router.put("/updatefood/:id", UpdateFood)
-router.delete("/removefood/:id", removeFood)
+router.post("/", addFoods)
+router.get("/", getAllFoods)
+router.get("/:id", getFoodById)
+router.patch("/:id", UpdateFood)
+router.delete("/:id", removeFood)
 router.get("/findbycat/:cat", findFoodByCat)
-module.exports = router;
+// module.exports = router;
+export default router;
